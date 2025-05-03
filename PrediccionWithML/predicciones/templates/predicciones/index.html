@@ -1,0 +1,34 @@
+<!-- predicciones/templates/predicciones/index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predicción Salud (Django + Flask)</title>
+</head>
+<body>
+    <h1>Formulario de Predicción</h1>
+    <form method="post" action="{% url 'api_predict' %}">
+        {% csrf_token %}
+        Age: <input type="number" name="Age"><br>
+        Sex: <input type="number" name="Sex"><br>
+        ChestPainType: <input type="number" name="ChestPainType"><br>
+        RestingBP: <input type="number" name="RestingBP"><br>
+        Cholesterol: <input type="number" name="Cholesterol"><br>
+        FastingBS: <input type="number" name="FastingBS"><br>
+        RestingECG: <input type="number" name="RestingECG"><br>
+        MaxHR: <input type="number" name="MaxHR"><br>
+        ExerciseAngina: <input type="number" name="ExerciseAngina"><br>
+        Oldpeak: <input type="number" step="0.1" name="Oldpeak"><br>
+        ST_Slope: <input type="number" name="ST_Slope"><br><br>
+        <button type="submit">Predecir</button>
+    </form>
+
+    {% if resultado %}
+        <h2>Resultado de la Predicción: {{ resultado }}</h2>
+    {% endif %}
+
+    {% if error %}
+        <p style="color:red;">Error: {{ error }}</p>
+    {% endif %}
+</body>
+</html>
